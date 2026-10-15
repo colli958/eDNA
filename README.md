@@ -12,8 +12,11 @@
   - To install CRABS with conda
     
     unset PYTHONPATH
+    
     conda create -n CRABS -c conda-forge -c bioconda python=3.10 crabs
+    
     activate
+    
     conda activate CRABS
   - Test crabs
     
