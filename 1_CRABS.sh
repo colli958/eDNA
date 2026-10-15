@@ -14,15 +14,15 @@
 # useful conda commands
 ###############################
 # to see all installed packages
-conda list
+#conda list
 # to leave current environment
-conda deactivate
+#conda deactivate
 # to see all environments
-conda env list
+#conda env list
 # to remove an environment
-conda remove -n env_to_remove --all
+#conda remove -n env_to_remove --all
 # to rename an environment
-conda rename -n old_env_name new_env_name
+#conda rename -n old_env_name new_env_name
 ###############################
 
 # to activate the environment after installation
