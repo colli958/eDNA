@@ -1,5 +1,5 @@
 # eDNA
-Crayfish 16S eDNA pipeline
+# Crayfish 16S eDNA pipeline
 
 - Begin with 1_CRABS.sh to build the databasee
   
