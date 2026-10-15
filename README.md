@@ -4,6 +4,7 @@ Crayfish 16S eDNA pipeline
 - Begin with 1_CRABS.sh to build the databasee
   
   - May need to install conda and CRABS first, if so follow these steps:
+    
     curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
   # this installs or with the -u it updates conda
     bash Miniconda3-latest-Linux-x86_64.sh -u
