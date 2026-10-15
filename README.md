@@ -1,6 +1,10 @@
 # eDNA
 # Crayfish 16S eDNA pipeline
 
+create a directory structure that mimics what is in this GitHub
+
+edit the config file as needed
+
 - Begin with 1_CRABS.sh to build the databasee
   
   - May need to install conda and CRABS first, if so follow these steps:
