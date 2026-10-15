@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# file structure
+# crayfish_edna_pipeline/
+# │
+# ├── config/
+# │   └── config.sh
+# │
+# ├── scripts/
+# │   ├── 01_build_reference.sh
+# │   ├── 02_trim_reads.sh
+# │   ├── 03_dada2_pipeline.R
+# │   └── run_pipeline.sh
+# │
+# ├── raw_seqs/
+# ├── reference_db/
+# ├── results/
+# ├── logs/
+# └── plots/
+
 # Project directory
 PROJECT_DIR="/mnt/home/colli958/eDNA_test2"
 
