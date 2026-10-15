@@ -7,21 +7,20 @@ crayfish_edna_pipeline/
 
 ├── config/
 
-│     └── config.sh
+│       └── config.sh
 
-│
+
 
 ├── scripts/
 
-│     ├── 01_build_reference.sh
+│       ├── 01_build_reference.sh
 
-│     ├── 02_trim_reads.sh
+│       ├── 02_trim_reads.sh
 
-│     ├── 03_dada2_pipeline.R
+│       ├── 03_dada2_pipeline.R
 
-│     └── run_pipeline.sh
+│       └── run_pipeline.sh
 
-│
 
 ├── raw_seqs/
 
