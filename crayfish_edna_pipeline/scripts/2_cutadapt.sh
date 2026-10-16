@@ -11,7 +11,8 @@
 
 #update the path to your run directory
 # bash 2_cutadapt_script.sh, to run the script
-RUN_PATH=/mnt/home/colli958/eDNA_test2/
+source config.sh
+RUN_PATH="$PROJECT_DIR"
 
 mkdir -p $RUN_PATH/trimmed
 mkdir -p $RUN_PATH/out
