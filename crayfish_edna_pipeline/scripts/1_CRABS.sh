@@ -29,7 +29,8 @@
 unset PYTHONPATH
 conda activate CRABS
 # create a directory to store the downloaded data
-OUTDIR="/mnt/home/colli958/crabs_testing"
+source config.sh
+OUTDIR="$DB_DIR"
 mkdir -p "$OUTDIR"
 # to download 16S data for CRABS
 crabs --download-ncbi \
