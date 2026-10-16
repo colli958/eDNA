@@ -26,6 +26,5 @@ edit the config file as needed
     
     crabs -h
 
-
-- Then run 2_cutadapt.sh to trim the metabarcoding fastqs
-- Then run 3_dada.sh to assign the samples to taxonomic groups
+- To execute the pipeline:
+    bash run_pipeline.sh
