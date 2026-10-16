@@ -31,6 +31,7 @@ sort | while read -r SAMPLE
 do
 
 cat > trimQualityFilter.${SAMPLE}.sh << EOF
+
 #!/bin/bash --login
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
