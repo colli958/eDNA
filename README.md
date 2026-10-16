@@ -27,4 +27,5 @@ edit the config file as needed
     crabs -h
 
 - To execute the pipeline:
-    bash run_pipeline.sh
+
+  bash run_pipeline.sh
