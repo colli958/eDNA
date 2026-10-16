@@ -25,3 +25,13 @@ echo "Submitting cutadapt array job..."
 sbatch \
     --array=1-"$N" \
     cutadapt_array.sb
+
+if [ ! -s "$OUT1" ]; then
+    echo "ERROR: Empty output file $OUT1"
+    exit 1
+fi
+
+if [ ! -s "$OUT2" ]; then
+    echo "ERROR: Empty output file $OUT2"
+    exit 1
+fi
