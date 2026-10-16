@@ -1,21 +1,27 @@
 #!/bin/bash
-#SBATCH --array=1-100
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
-
-module purge
-module load cutadapt/4.4-GCCcore-12.2.0
 
 source config.sh
 
-SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" sample_list.txt)
+mkdir -p "$TRIM_DIR"
+mkdir -p "$PROJECT_DIR/qstat/cutadapt"
 
-cutadapt \
-   --nextseq-trim=35 \
-   -q 25 \
-   --minimum-length=10 \
-   --cores=4 \
-   -o ${TRIM_DIR}/${SAMPLE}_trimmed_R1.fastq.gz \
-   -p ${TRIM_DIR}/${SAMPLE}_trimmed_R2.fastq.gz \
-   ${RAW_DIR}/${SAMPLE}_R1_001.fastq \
-   ${RAW_DIR}/${SAMPLE}_R2_001.fastq
+# Generate sample list
+find "$RAW_DIR" \
+    -name "*_R1_001.fastq" \
+    -exec basename {} _R1_001.fastq \; \
+    | sort > "$PROJECT_DIR/sample_list.txt"
+
+N=$(wc -l < "$PROJECT_DIR/sample_list.txt")
+
+echo "Found $N samples"
+
+if [ "$N" -eq 0 ]; then
+    echo "ERROR: No samples found."
+    exit 1
+fi
+
+echo "Submitting cutadapt array job..."
+
+sbatch \
+    --array=1-"$N" \
+    cutadapt_array.sb
