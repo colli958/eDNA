@@ -1,0 +1,48 @@
+#!/bin/bash --login
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=02:00:00
+#SBATCH --job-name=cutadapt
+#SBATCH --output=/mnt/home/colli958/eDNA_test2/qstat/cutadapt/%A_%a.out
+
+source config.sh
+
+module purge
+module load cutadapt/4.4-GCCcore-12.2.0
+
+SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" \
+    "$PROJECT_DIR/sample_list.txt")
+
+echo "Processing sample:"
+echo "$SAMPLE"
+
+R1="$RAW_DIR/${SAMPLE}_R1_001.fastq"
+R2="$RAW_DIR/${SAMPLE}_R2_001.fastq"
+
+OUT1="$TRIM_DIR/${SAMPLE}_trimmed_R1.fastq.gz"
+OUT2="$TRIM_DIR/${SAMPLE}_trimmed_R2.fastq.gz"
+
+# Verify input files
+if [ ! -f "$R1" ]; then
+    echo "ERROR: Missing file $R1"
+    exit 1
+fi
+
+if [ ! -f "$R2" ]; then
+    echo "ERROR: Missing file $R2"
+    exit 1
+fi
+
+cutadapt \
+    --nextseq-trim=35 \
+    -q 25 \
+    --minimum-length=10 \
+    --cores=4 \
+    -o "$OUT1" \
+    -p "$OUT2" \
+    "$R1" \
+    "$R2"
+
+echo "Finished $SAMPLE"
