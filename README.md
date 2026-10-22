@@ -27,7 +27,11 @@ May need to install conda and CRABS first, if so follow these steps:
     crabs -h
 
 - To execute the pipeline:
+  
   cd <path_to_project_directory>
+  
   bash scripts/run_pipeline.sh
+  
   - to check your jobs as they are running
+  
     squeue -u $USER
