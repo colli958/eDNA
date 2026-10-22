@@ -6,7 +6,7 @@ create a project directory and copy the files within, "crayfish_edna_pipeline" d
   - inside your project directory, there should also be a, "scripts" directory with 7 files inside
 
 open the config file and edit the config file to match your project directory name and make sure all paths match
-  - change crayfish_edna_pipeline to match your project directory name (the directory that contains the config and scripts directories)
+  - look for "crayfish_edna_pipeline" and change to match your project directory name (the directory that contains the config and scripts directories)
   
 # May need to install conda and CRABS first, if so follow these steps:
   - To download conda:
