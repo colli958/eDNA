@@ -1,0 +1,125 @@
+#!/bin/bash --login
+
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=02:00:00
+#SBATCH --job-name=cutadapt
+
+set -euo pipefail
+
+###############################################################################
+# Load configuration
+###############################################################################
+
+source "${PIPELINE_DIR}/config/config.sh"
+
+###############################################################################
+# Environment
+###############################################################################
+
+module purge
+module load cutadapt/4.4-GCCcore-12.2.0
+
+###############################################################################
+# Get sample name for this array task
+###############################################################################
+
+SAMPLE=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$SAMPLE_LIST")
+
+echo "=================================="
+echo "Job ID: $SLURM_JOB_ID"
+echo "Array Task: $SLURM_ARRAY_TASK_ID"
+echo "Sample: $SAMPLE"
+echo "=================================="
+
+if [ -z "$SAMPLE" ]; then
+    echo "ERROR: Could not determine sample name."
+    exit 1
+fi
+
+###############################################################################
+# Input files
+###############################################################################
+
+R1="$RAW_DIR/${SAMPLE}_R1_001.fastq"
+R2="$RAW_DIR/${SAMPLE}_R2_001.fastq"
+
+###############################################################################
+# Output files
+###############################################################################
+
+OUT1="$TRIM_DIR/${SAMPLE}_trimmed_R1.fastq.gz"
+OUT2="$TRIM_DIR/${SAMPLE}_trimmed_R2.fastq.gz"
+
+###############################################################################
+# Verify inputs exist
+###############################################################################
+
+if [ ! -f "$R1" ]; then
+    echo "ERROR: Missing file $R1"
+    exit 1
+fi
+
+if [ ! -f "$R2" ]; then
+    echo "ERROR: Missing file $R2"
+    exit 1
+fi
+
+###############################################################################
+# Create output directory
+###############################################################################
+
+mkdir -p "$TRIM_DIR"
+
+###############################################################################
+# Skip samples that have already successfully trimmed
+###############################################################################
+
+OUT_R1="${TRIM_DIR}/${SAMPLE}_trimmed_R1.fastq.gz"
+OUT_R2="${TRIM_DIR}/${SAMPLE}_trimmed_R2.fastq.gz"
+
+if [[ -f "$OUT_R1" && -f "$OUT_R2" ]]; then
+    echo "Trimmed files already exist for $SAMPLE"
+    echo "Skipping."
+    exit 0
+fi
+
+###############################################################################
+# Run cutadapt
+###############################################################################
+
+cutadapt \
+    --nextseq-trim=35 \
+    -q 25 \
+    --minimum-length=10 \
+    --cores="$THREADS" \
+    -o "$OUT1" \
+    -p "$OUT2" \
+    "$R1" \
+    "$R2"
+
+###############################################################################
+# Verify outputs
+###############################################################################
+
+if [ ! -s "$OUT1" ]; then
+    echo "ERROR: Empty output file $OUT1"
+    exit 1
+fi
+
+if [ ! -s "$OUT2" ]; then
+    echo "ERROR: Empty output file $OUT2"
+    exit 1
+fi
+
+###############################################################################
+# Report success
+###############################################################################
+
+echo "Finished processing $SAMPLE"
+
+echo "Output files:"
+echo "  $OUT1"
+echo "  $OUT2"
