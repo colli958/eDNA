@@ -1,7 +1,7 @@
 # eDNA
 # Crayfish 16S eDNA pipeline
 
-create a project directory and copy the files within crayfish_edna_pipeline to your project directory
+create a project directory and copy the files within, "crayfish_edna_pipeline" directory to your project directory
   - there should be a, "config" directory with 1 file inside
   - there should be a, "scripts" directory with 7 files inside
 
