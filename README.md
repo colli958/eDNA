@@ -1,14 +1,14 @@
 # eDNA
 # Crayfish 16S eDNA pipeline
 
-create a directory structure that mimics what is in the config file 
+create a project directory and copy the files within crayfish_edna_pipeline to your project directory
+  - there should be a, "config" directory with 1 file inside
+  - there should be a, "scripts" directory with 7 files inside
 
-edit the config file as needed
-
-- Begin with 1_CRABS.sh to build the databasee
+open the config file and edit the config file to match your project directory name and make sure all paths match
+  - change crayfish_edna_pipeline to match your project directory name (the directory that contains the config and scripts directories)
   
-  - May need to install conda and CRABS first, if so follow these steps:
-    
+May need to install conda and CRABS first, if so follow these steps:
     curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
   - This installs or with the -u it updates conda
     
@@ -27,5 +27,7 @@ edit the config file as needed
     crabs -h
 
 - To execute the pipeline:
-
-  bash run_pipeline.sh
+  cd <path_to_project_directory>
+  bash scripts/run_pipeline.sh
+  - to check your jobs as they are running
+    squeue -u $USER
