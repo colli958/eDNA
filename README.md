@@ -1,13 +1,13 @@
 # Crayfish 16S eDNA pipeline
 
-### This pipeline is designed to work within Michigan State University's HPCC system
+* This pipeline is designed to work within Michigan State University's HPCC system
 
-### Create a project directory in your hpcc drive and copy the files within, "crayfish_edna_pipeline" directory from this GitHub page to your project directory
+* Create a project directory in your hpcc drive and copy the files within, "crayfish_edna_pipeline" directory from this GitHub page to your project directory
   * inside your project directory, there should be a, "config" directory with 1 file inside
   * inside your project directory, there should also be a, "scripts" directory with 7 files inside
   * next, create a raw_seqs directory and move your raw fastq data to this directory
 
-### Open the config file and edit it to match your project directory name and make sure all paths match
+* Open the config file and edit it to match your project directory name and make sure all paths match
   * look for "crayfish_edna_pipeline" and change to match your project directory name (the directory that contains the config and scripts directories)
   
 # May need to install conda and CRABS first, if so follow these steps:
