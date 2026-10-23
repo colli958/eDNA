@@ -9,6 +9,8 @@
 
 * Open the config file and edit it to match your project directory name and make sure all paths match
   * look for "crayfish_edna_pipeline" and change to match your project directory name (the directory that contains the config and scripts directories)
+ 
+* Note that the included script for building the database (01_build_reference.sh) is written to build a database of crayfish at the 16S genetic region with sequences from NCBI. Edits will be needed to search for the organism or genetic region of interest at the, "Download target sequences from NCBI" line of the script.
   
 ## May need to install conda and CRABS first, if so follow these steps:
   ### To download conda:
@@ -32,8 +34,6 @@
   ### Test crabs
     
       crabs -h
-
-> Note that the included script for building the database (01_build_reference.sh) is written to build a database of crayfish at the 16S genetic region with sequences from NCBI. Edits will be needed to search for the organism or genetic region of interest at the, "Download target sequences from NCBI" line of the script.
 
 # To execute the pipeline:
   
