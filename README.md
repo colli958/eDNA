@@ -3,7 +3,7 @@
 
 this pipeline is designed to work within Michigan State University's HPCC system
 
-create a project directory and copy the files within, "crayfish_edna_pipeline" directory to your project directory
+create a project directory in your hpcc drive and copy the files within, "crayfish_edna_pipeline" directory from this GitHub page to your project directory
   - inside your project directory, there should be a, "config" directory with 1 file inside
   - inside your project directory, there should also be a, "scripts" directory with 7 files inside
   - next, create a raw_seqs directory and move your raw fastq data to this directory
