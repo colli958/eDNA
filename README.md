@@ -10,7 +10,7 @@
 * Open the config file and edit it to match your project directory name and make sure all paths match
   * look for "crayfish_edna_pipeline" and change to match your project directory name (the directory that contains the config and scripts directories)
   
-# May need to install conda and CRABS first, if so follow these steps:
+## May need to install conda and CRABS first, if so follow these steps:
   ### To download conda:
 
       curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
