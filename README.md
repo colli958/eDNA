@@ -6,8 +6,9 @@ this pipeline is designed to work within Michigan State University's HPCC system
 create a project directory and copy the files within, "crayfish_edna_pipeline" directory to your project directory
   - inside your project directory, there should be a, "config" directory with 1 file inside
   - inside your project directory, there should also be a, "scripts" directory with 7 files inside
+  - next, create a raw_seqs directory and move your raw fastq data to this directory
 
-open the config file and edit the config file to match your project directory name and make sure all paths match
+open the config file and edit it to match your project directory name and make sure all paths match
   - look for "crayfish_edna_pipeline" and change to match your project directory name (the directory that contains the config and scripts directories)
   
 # May need to install conda and CRABS first, if so follow these steps:
@@ -39,6 +40,6 @@ open the config file and edit the config file to match your project directory na
   
   bash scripts/run_pipeline.sh
   
-  - to check your jobs as they are running
+  - to check your jobs as they are running, look at the log files in the log directory or:
   
     squeue -u $USER
